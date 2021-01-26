@@ -1,0 +1,21 @@
+# action.yaml
+name: 'kubectl action'
+description: 'Control your K8s'
+inputs:
+  kubeconfig:
+    description: 'base64 encoded kubeconfig file'
+    required: true
+  kubectl_command:
+    description: 'kubectl command to run'
+    required: true
+outputs:
+  kubectl_response:
+    description: 'stndout response for input'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.kubectl_command }}
+branding:
+  icon: 'book-open'
+  color: 'gray-dark'

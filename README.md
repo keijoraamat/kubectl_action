@@ -9,14 +9,15 @@ Differs from many others base64 decodeing with ignoring garbage [base64 man page
 `.github/workflows/action.yml`
 ```
 on: push
-name: deploy
+name: view
 jobs:
-  deploy:
-    name: Deploy to cluster
+  view:
+    name: Get pods
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
     - name: run kubectl command
+      id: kubectl_command
       uses: keijoraamat/kubectl_action@0.1.0
       env:
         kube_confg: ${{ secrets.KUBE_CONFIG }}
